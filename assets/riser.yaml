@@ -1,0 +1,17 @@
+riser:
+  version: 0.0.1
+
+database:
+  engine: postgresql
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
+  database: petshop
+
+directories:
+  services: services
+  sqlc-gen: sqlc
+  controllers: controllers
+  routes: routes
+

@@ -1,0 +1,44 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Go workspace file
+go.work
+
+# Go modules
+go.mod
+go.sum
+
+# Go build artifacts
+bin/
+build/
+
+# IDE directories
+.idea/
+.vscode/
+*.swp
+
+# Dependency directories
+vendor/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test binary, coverage reports, and results
+*.test
+*.cover
+*.cov
+*.prof
+
+# Makefile output
+Makefile
