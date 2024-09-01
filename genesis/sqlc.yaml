@@ -1,0 +1,49 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "assets/queries"
+    schema: "assets/migrations"
+    database:
+      uri: postgresql://tsdbadmin:frenter@localhost:5434/tsdb
+    gen:
+      go:
+        package: "sqlc"
+        out: "internal/sqlc"
+        sql_package: "pgx/v5"
+        emit_pointers_for_null_types: true
+        overrides:
+          # there can be different mappings for nullable / non-nullable, so we must declare both
+          - db_type: "ulid"
+            go_type:
+              import: "github.com/frenter-inc/frenter-sdks/types/go"
+              package: "types"
+              type: "ULID"
+          - db_type: "ulid"
+            go_type:
+              import: "github.com/frenter-inc/frenter-sdks/types/go"
+              package: "types"
+              type: "ULID"
+              pointer: true
+            nullable: true
+          - db_type: "pg_catalog.numeric"
+            go_type:
+              import: "github.com/shopspring/decimal"
+              package: "decimal"
+              type: "Decimal"
+          - db_type: "pg_catalog.numeric"
+            go_type:
+              import: "github.com/shopspring/decimal"
+              package: "decimal"
+              type: "Decimal"
+              pointer: true
+            nullable: true
+          - db_type: "timestamptz"
+            go_type:
+              import: "time"
+              type: "Time"
+          - db_type: "timestamptz"
+            nullable: true
+            go_type:
+              import: "time"
+              type: "Time"
+              pointer: true
